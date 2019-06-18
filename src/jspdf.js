@@ -96,13 +96,17 @@ var jsPDF = (function (global) {
    * @constructor
    * @private
    */
-  function jsPDF(orientation, unit, format, compressPdf) {
-    var options = {};
+  function jsPDF(options) {
+    var unit = arguments[1];
+    var format = arguments[2];
+    var compressPdf = arguments[3];
     var filters = [];
     var userUnit = 1.0;
+    var orientation = typeof options === 'string' ? options : 'p';
 
-    if (typeof orientation === 'object') {
-      options = orientation;
+    options = options || {};
+
+    if (typeof options === 'object') {
 
       orientation = options.orientation;
       unit = options.unit || unit;
@@ -1019,8 +1023,7 @@ var jsPDF = (function (global) {
           arrayOfFonts[i][2],
           standardFonts[i][3],
           true);
-          
-        usedFonts[fontKey] = true;
+
         // adding aliases for standard fonts, this time matching the capitalization
         var parts = arrayOfFonts[i][0].split('-');
         addToFontDictionary(fontKey, parts[0], parts[1] || '');
