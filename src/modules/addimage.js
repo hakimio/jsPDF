@@ -491,7 +491,7 @@
         var result = null;
         
         if (dataUrlParts.length === 2) {
-            var extractedInfo = /^data:(\w*\/\w*);*(charset=[\w=-]*)*;*$/.exec(dataUrlParts[0]);
+            var extractedInfo = /^data:(\w*\/\w*);*(charset=(?!charset=)[\w=-]*)*;*$/.exec(dataUrlParts[0]);
             if (Array.isArray(extractedInfo)) {
                 result = {
                     mimeType : extractedInfo[1],

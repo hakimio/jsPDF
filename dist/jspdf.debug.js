@@ -3495,7 +3495,7 @@
      * @memberOf jsPDF
      */
 
-    jsPDF.version = '1.5.3';
+    jsPDF.version = '2.3.1';
 
     if (typeof define === 'function' && define.amd) {
       define('jsPDF', function () {
@@ -4058,7 +4058,7 @@
       var result = null;
 
       if (dataUrlParts.length === 2) {
-        var extractedInfo = /^data:(\w*\/\w*);*(charset=[\w=-]*)*;*$/.exec(dataUrlParts[0]);
+        var extractedInfo = /^data:(\w*\/\w*);*(charset=(?!charset=)[\w=-]*)*;*$/.exec(dataUrlParts[0]);
 
         if (Array.isArray(extractedInfo)) {
           result = {
